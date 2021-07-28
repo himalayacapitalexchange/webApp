@@ -1,0 +1,55 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/userData.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<table class="table table-hover table-bordered">
+  <thead class="thead-dark">
+  <tr>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>Mail</th>
+    <th>Phone No.</th>
+    <th>Gender</th>
+    <th>ID Type</th>
+    <th>ID Number</th>
+    <th>Address</th>
+    <th>About Person</th>
+    <th>Qualifications</th>
+  </tr>
+</thead>
+<tbody>
+  {% for userData in userDataList%}
+  <tr>
+    <td>{{userData.name}}</td>
+    <td>{{userData.DOB}}</td>
+    <td>{{userData.mailID}}</td>
+    <td>{{userData.contactNumber}}</td>
+    <td>{{userData.gender}}</td>
+    <td>{{userData.idType}}</td>
+    <td>{{userData.idNo}}</td>
+    <td>{{userData.houseNo}}, {{userData.district}}, {{userData.city_state}}</td>
+    <td>{{userData.about}}</td>
+    <td>{{userData.qualification}}</td>
+    <td>
+        {% for skill in userData[8] %}
+            {{skill}},
+        {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+
+<div class="btn-block">
+  <button type="button" onclick="location.href='/homePage'" >Go to home page</button>
+</div>
+
+{% endblock %}
+
+
+
